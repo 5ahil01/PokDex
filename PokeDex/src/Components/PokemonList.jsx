@@ -20,6 +20,7 @@ const PokemonList = () => {
           return (
             <li key={pokemon.name}>
               <h1>{pokemon.name}</h1>
+              {/* <h2>{pokemon.imageUrl}</h2> */}
               <Link
                 to="/pokemoninfo"
                 onClick={() =>

@@ -13,7 +13,7 @@ export const fetchPokemonInfo = createAsyncThunk(
 const pokemonInfoSlice = createSlice({
   name: "pokemonInfo",
   initialState: {
-    pokemonInfo: [],
+    pokemonInfo: {},
     status: "idle",
     fetchUrl: "",
   },

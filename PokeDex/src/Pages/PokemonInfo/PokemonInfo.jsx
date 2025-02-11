@@ -8,13 +8,33 @@ const PokemonInfo = () => {
     (state) => state.pokemonInfo
   );
 
+  // Fetch Pokémon info when the component mounts or when the URL changes
   useEffect(() => {
-    if (status === "idle") {
+    if (fetchUrl) {
       dispatch(fetchPokemonInfo(fetchUrl));
     }
-  }, [status, dispatch]);
+  }, [fetchUrl, dispatch]);
 
-  return <div>PokemonInfo</div>;
+  // Handle loading state
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  // Handle error state
+  if (status === "failed") {
+    return <div>Error fetching Pokémon info.</div>;
+  }
+
+  // Handle case where pokemonInfo is not yet available or incomplete
+  if (!pokemonInfo || !pokemonInfo.species) {
+    return <div>No Pokémon data available.</div>;
+  }
+
+  return (
+    <div>
+      <h2>{pokemonInfo.species.name}</h2>
+    </div>
+  );
 };
 
 export default PokemonInfo;
